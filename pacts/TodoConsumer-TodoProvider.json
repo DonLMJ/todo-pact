@@ -1,0 +1,73 @@
+{
+  "consumer": {
+    "name": "TodoConsumer"
+  },
+  "interactions": [
+    {
+      "description": "a request to delete todo",
+      "providerState": "a todo item exists with id 1",
+      "request": {
+        "method": "POST",
+        "path": "/delete/1"
+      },
+      "response": {
+        "body": "VG9kbyBkZWxldGVkIHN1Y2Nlc3NmdWxseQ==",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request to mark todo as completed",
+      "providerState": "a todo item exists with id 1",
+      "request": {
+        "method": "POST",
+        "path": "/complete/1"
+      },
+      "response": {
+        "body": "VG9kbyBtYXJrZWQgYXMgY29tcGxldGVk",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for todos",
+      "providerState": "todo items exist",
+      "request": {
+        "method": "GET",
+        "path": "/todos"
+      },
+      "response": {
+        "body": [
+          {
+            "completed": false,
+            "id": 1,
+            "task": "Send email to Dad"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "12.3.0"
+    },
+    "pactRust": {
+      "ffi": "0.4.16",
+      "models": "1.1.19"
+    },
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  },
+  "provider": {
+    "name": "TodoProvider"
+  }
+}
