@@ -1,18 +1,18 @@
-Scenario
+Project Overview
 
-There are two components in scope for this project:
-- Todo website. It provides an interface to query the todos service for todos information.
-- Todo Service (Provider). Provides useful things about todos, such as listing all todos, adding,c ompleting and deleting todos.
+This project involves two main components:
 
-You can see the client interface we created in ./src/todo.routes.ts using express without database.
+Todo Website: A user interface designed to interact with the Todo Service.
+Todo Service (Provider): Offers functionalities related to managing todos, such as listing, adding, completing, and deleting todos.
+Project Structure
+src/todo.routes.ts: Contains the client interface built using Express, facilitating communication with the Todo Service. This component operates without a database.
+__tests__/api.spec.ts: Houses API integration tests, which could potentially be integrated into component integration tests.
+__tests__/consumer.test.ts: Features consumer-driven Pact tests. Here, a mock server is initiated on a random port to mimic the behavior of the provider service and verify that the contract is upheld from the consumer's perspective.
+Testing Approach
+Executing these tests generates a Pact file, typically found in consumer/pacts/. This file serves as a validation mechanism for our assumptions on the provider's behavior.
 
-In __tests__, you can see api.spec.ts where you can find api integrations tests which could be added in components integratition tests.
+Given that the client version may not always align with the deployed API, it's crucial to specify the state of both the consumer and the provider when running contract tests. This ensures that the tests accurately reflect real-world scenarios.
 
-In consumer.test.ts you can find consumer driven pact tests where a mock server is started on a random port which acts as our provider service and check the contract is respected from the consumer side.
-
-Running this tests creates a pact file which we can use to validate our assumptions on the provider side. A pact file should have been generated in consumer/pacts/.
-
-Because the version of the client we have may not always be in sync with the deployed API - this is why it is important to specify the state of the consumer and provider when running the contract tests.
-
-Further steps in this type of projects:
-- Use pact broker to publish the contract with docker and use pact-cli/can-i-deploy to verify whether the application can be deployed safely, client and provider.
+Next Steps
+Pact Broker Integration: Consider integrating with a Pact Broker to publish contracts. Docker can be leveraged for this purpose. Utilize pact-cli or can-i-deploy tools to verify whether the application can be safely deployed, both for the client and the provider.
+By following these steps, we can ensure robust communication between the components while maintaining consistency and reliability in our services.

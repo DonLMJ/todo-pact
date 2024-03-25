@@ -1,7 +1,7 @@
 import supertest from 'supertest';
 import express, { Router } from 'express';
 
-import { router } from '../src/routes/todo.routes'; // Replace 'your-router-file' with the actual path to your router file
+import { router } from '../src/routes/todo.routes'; 
 
 const app = express();
 app.use('/', router);
@@ -17,7 +17,7 @@ describe('TodoList Controller', () => {
     let todoIdToComplete: number;
 
     beforeAll(() => {
-        // Assuming your todoList has some initial todos
+        // Assuming todoList has some initial todos
         // Choose an existing todo for deletion and completion
         todoIdToDelete = 1;
         todoIdToComplete = 3;
@@ -58,5 +58,5 @@ describe('TodoList Controller', () => {
         expect(completedTodo?.completed).toBe(true);
     });
 
-    // Add more tests for error cases, validation, etc. if needed
+    // Add more tests for error cases, validation, etc.
 });

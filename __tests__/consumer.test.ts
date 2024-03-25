@@ -1,7 +1,7 @@
 import { Pact, Matchers } from '@pact-foundation/pact';
 import supertest from 'supertest';
 import express, { Router } from 'express';
-//import app from '../app'; // Import your Express app
+//import app from '../app'; // Import Express app
 import { router } from '../src/routes/todo.routes';
 const path = require('path');
 
@@ -14,8 +14,6 @@ const provider = new Pact({
     dir: path.resolve(process.cwd(), 'pacts'),
 });
 
-
-//import app from '../app'; // Import your Express app
 
 const app = express();
 app.use('/', router);
@@ -41,12 +39,12 @@ describe('Todo Consumer', () => {
                 body: [
                     {
                         id: Matchers.term({
-                            matcher: '^[0-9]+$',
+                            matcher: '^[0-3]+$',
                             generate: '1'
                         }),
                         task: Matchers.term({
                             matcher: '.*', // Match any string
-                            generate: 'Task 1' // Example string
+                            generate: 'Send email to Dad' // Example string
                         }),
                         completed: Matchers.boolean(false),
                     },

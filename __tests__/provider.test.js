@@ -1,8 +1,8 @@
-//import { Pact, Matchers } from '@pact-foundation/pact';
-//import supertest from 'supertest';
-//import express, { Router } from 'express';
-//import app from '../app'; // Import your Express app
-//import { router } from '../src/routes/todo.routes';
+import { Pact, Matchers } from '@pact-foundation/pact';
+import supertest from 'supertest';
+import express, { Router } from 'express';
+import app from '../app'; // Import your Express app
+import { router } from '../src/routes/todo.routes';
 
 const path = require('path');
 
@@ -17,7 +17,7 @@ const provider = new Pact({
 const app = express();
 app.use('/', router);
 beforeAll(() => provider.setup());
-//afterEach(() => provider.verify());
+afterEach(() => provider.verify());
 afterAll(() => provider.finalize());
 
 describe('Todo Provider', () => {
